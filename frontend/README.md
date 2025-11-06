@@ -1,0 +1,82 @@
+# EV Blog - HTML Project
+
+A static HTML/CSS/JavaScript version of the Elec-vehicles blog website, converted from the React web-app project.
+
+## Project Structure
+
+```
+frontend/
+├── index.html          # Home page
+├── blog.html          # Blog listing page
+├── about.html         # About page
+├── contact.html       # Contact page
+├── single-blog.html   # Single blog post page
+├── css/
+│   └── styles.css     # Custom styles and theme variables
+├── js/
+│   ├── main.js        # Main JavaScript functionality
+│   └── data.js       # Mock blog data
+└── README.md         # This file
+```
+
+## Features
+
+- **5 Complete Pages:**
+  - Home page with hero section, featured article, info cards, and latest articles
+  - Blog listing page with search and filters
+  - About page with mission, vision, values, and team
+  - Contact page with form and map
+  - Single blog post page with full article content and related posts
+
+- **Styling:**
+  - Uses Tailwind CSS via CDN
+  - Custom CSS with same color scheme as web-app project
+  - Dark mode support
+  - Responsive design
+  - Same fonts (Inter & Poppins) and styling as original
+
+- **Functionality:**
+  - Theme toggle (light/dark mode)
+  - Mobile menu toggle
+  - Newsletter modal
+  - Contact form submission
+  - Dynamic blog post loading
+  - Related posts display
+
+## Color Scheme
+
+The project uses the same color scheme as the web-app:
+
+- **Primary Colors:**
+  - Light Blue: `#DDEBFF`
+  - Teal: `#BFEFEA`
+  - Dark: `#1E1E1E`
+
+- **Text Colors:**
+  - Primary: `#1A1A1A`
+  - Secondary: `#4D4D4D`
+  - Muted: `#8C8C8C`
+
+- **Background:**
+  - Light mode: `#FFFFFF`
+  - Dark mode: `#0F0F0F`
+
+## Usage
+
+1. Open `index.html` in a web browser
+2. Navigate between pages using the navigation menu
+3. Toggle dark mode using the theme button
+4. View blog posts and interact with the site
+
+## Browser Support
+
+- Modern browsers (Chrome, Firefox, Safari, Edge)
+- Responsive design works on mobile, tablet, and desktop
+
+## Notes
+
+- All images are loaded from Unsplash
+- Blog data is stored in `js/data.js`
+- Theme preference is saved in localStorage
+- No build process required - pure HTML/CSS/JS
+
