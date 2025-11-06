@@ -530,65 +530,105 @@
   <script src="js/main.js"></script>
   <script>
     // Load featured article (last added blog)
-    document.addEventListener('DOMContentLoaded', () => {
+    function loadFeaturedArticle() {
+      // Check if mockBlogPosts is available
+      if (typeof mockBlogPosts === 'undefined' || !Array.isArray(mockBlogPosts) || mockBlogPosts.length === 0) {
+        console.error('mockBlogPosts is not available or empty');
+        return;
+      }
+
       // Get the last blog from the array (last added)
       const featuredPost = mockBlogPosts[mockBlogPosts.length - 1];
       const featuredContainer = document.getElementById('featured-article');
 
-      if (featuredPost && featuredContainer) {
-        const featuredArticle = document.createElement('a');
-        featuredArticle.href = `blogs/single-blog.html?id=${featuredPost.id}`;
-        featuredArticle.className = 'group block bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300';
-        featuredArticle.innerHTML = `
-          <div class="grid md:grid-cols-2 gap-0">
-            <div class="relative h-64 md:h-full overflow-hidden bg-secondary">
-              <img src="${featuredPost.image || 'blogs/blogImages/blog1.jpg'}"
-                alt="${featuredPost.title}"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-              <div class="absolute top-4 left-4">
-                <span class="px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm">Featured</span>
-              </div>
-            </div>
-            <div class="p-8 lg:p-12 flex flex-col justify-center">
-              <div class="flex items-center gap-2 mb-4">
-                <span class="px-3 py-1 bg-secondary rounded-full text-sm">${featuredPost.category}</span>
-                <span class="text-muted-foreground flex items-center gap-1 text-sm">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  ${featuredPost.readTime}
-                </span>
-              </div>
-              <h2 class="mb-4 text-2xl lg:text-3xl font-semibold group-hover:text-primary transition-colors">${featuredPost.title}</h2>
-              <p class="text-muted-foreground mb-6 line-clamp-3">
-                ${featuredPost.excerpt}
-              </p>
-              <div class="flex items-center gap-2">
-                <span class="text-muted-foreground flex items-center gap-1 text-sm">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                  ${featuredPost.publishedDate}
-                </span>
-              </div>
+      if (!featuredPost) {
+        console.error('No featured post found');
+        return;
+      }
+
+      if (!featuredContainer) {
+        console.error('Featured article container not found');
+        return;
+      }
+
+      const featuredArticle = document.createElement('a');
+      // Use slug if available, otherwise fall back to id-based URL
+      featuredArticle.href = featuredPost.slug ? `blogs/${featuredPost.slug}.html` : `blogs/single-blog.html?id=${featuredPost.id}`;
+      featuredArticle.className = 'group block bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300';
+      featuredArticle.innerHTML = `
+        <div class="grid md:grid-cols-2 gap-0">
+          <div class="relative h-64 md:h-full overflow-hidden bg-secondary">
+            <img src="${featuredPost.image || 'blogs/blogImages/blog1.jpg'}"
+              alt="${featuredPost.title}"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm">Featured</span>
             </div>
           </div>
-        `;
-        featuredContainer.appendChild(featuredArticle);
+          <div class="p-8 lg:p-12 flex flex-col justify-center">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="px-3 py-1 bg-secondary rounded-full text-sm">${featuredPost.category}</span>
+              <span class="text-muted-foreground flex items-center gap-1 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                ${featuredPost.readTime}
+              </span>
+            </div>
+            <h2 class="mb-4 text-2xl lg:text-3xl font-semibold group-hover:text-primary transition-colors">${featuredPost.title}</h2>
+            <p class="text-muted-foreground mb-6 line-clamp-3">
+              ${featuredPost.excerpt}
+            </p>
+            <div class="flex items-center gap-2">
+              <span class="text-muted-foreground flex items-center gap-1 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                ${featuredPost.publishedDate}
+              </span>
+            </div>
+          </div>
+        </div>
+      `;
+      featuredContainer.appendChild(featuredArticle);
+    }
+
+    // Wait for DOM and data to be ready
+    document.addEventListener('DOMContentLoaded', () => {
+      // Try to load immediately, but also set a fallback timeout
+      if (typeof mockBlogPosts !== 'undefined') {
+        loadFeaturedArticle();
+      } else {
+        // Wait a bit for data.js to load
+        setTimeout(() => {
+          loadFeaturedArticle();
+        }, 100);
       }
     });
 
     // Load latest articles
     document.addEventListener('DOMContentLoaded', () => {
+      // Check if mockBlogPosts is available
+      if (typeof mockBlogPosts === 'undefined' || !Array.isArray(mockBlogPosts) || mockBlogPosts.length === 0) {
+        console.error('mockBlogPosts is not available or empty for latest articles');
+        return;
+      }
+
       const container = document.getElementById('latest-articles');
+      if (!container) {
+        console.error('Latest articles container not found');
+        return;
+      }
+
       // Exclude the last blog (featured article) from latest articles, then take up to 6 articles
       const allExceptLast = mockBlogPosts.slice(0, -1);
       const latestPosts = allExceptLast.slice(1, 7);
 
       latestPosts.forEach(post => {
         const article = document.createElement('a');
-        article.href = `blogs/single-blog.html?id=${post.id}`;
+        // Use slug if available, otherwise fall back to id-based URL
+        article.href = post.slug ? `blogs/${post.slug}.html` : `blogs/single-blog.html?id=${post.id}`;
         article.className = 'group block bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all duration-300';
         article.innerHTML = `
           ${post.image ? `
