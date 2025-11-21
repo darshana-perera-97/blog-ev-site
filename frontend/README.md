@@ -80,3 +80,20 @@ The project uses the same color scheme as the web-app:
 - Theme preference is saved in localStorage
 - No build process required - pure HTML/CSS/JS
 
+
+-------------------------------------------
+Keywords: 
+
+want to write a blog on " A universal AI deepfake detector was developed that identifies synthetic videos with 98% accuracy across multiple platforms and content types, aiding misinformation detection" with following keyword forcussing webisite. provide me a SEO friendly attractive topic also. should have 350 words?
+
+electric vehicles charging, electric vehicles, electric vehicles best, kia electric vehicles, electric vehicles mercedes, childrens electric vehicles,
+chevy electric vehicles, hyundai electric vehicles, subaru electric vehicles, mercedes benz electric vehicles, lexus electric vehicles,electric vehicles with longest range, electric vehicles truck, byd electric vehicles, electric and hybrid vehicles, costs of electric vehicles,vw electric vehicles, chinese electric vehicles, electric sports vehicles, audi electric vehicles, volvo electric vehicles,used electric vehicles for sale
+,cheapest electric vehicles ,electric hybrid vehicles, porsche electric vehicles, tesla electric vehicles ,incentive for electric vehicles, fully electric vehicles, nissan electric vehicles, general motors electric vehicles, genesis electric vehicles, hybrid electric vehicles hevs,chevrolet electric vehicles,best electric vehicles 2024, new electric vehicles, dodge electric vehicles, electric vehicles vs hybrids
+
+
+---------------------------
+
+Create a copy of battery-technology-breakthrough-solid-state-batteries-explained.html file and place the bellow content there. And add new cards for this blog in index.html and blog.html files also.
+Add tables, bullets points also if needed.
+
+mark the published data as 21st Nov 2025
